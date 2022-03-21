@@ -11,15 +11,18 @@ directories = {
 }
 
 
+
 def people_name():
     doc_number = input('Введите номер документа: ')
     count = 0
     for document in documents:
         if str(document["number"]) == str(doc_number):
-            print(f'Человека с этим номером документа зовут {document["name"]}')
+            result = f'Человека с этим номером документа зовут {document["name"]}'
             count = 1
     if count != 1:
-        print('Человека с таким номером документа нет в списке')
+        result = 'Человека с таким номером документа нет в списке'
+    print(result)
+    return result
 
 
 def shelf_number():
@@ -27,15 +30,18 @@ def shelf_number():
     count = 0
     for i in range(1, len(directories) + 1):
         if doc_number in list(directories[str(i)]):
-            print(f'документ на {i} полке')
+            result = f'документ на {i} полке'
             count = 1
     if count != 1:
-        print('Документа нет на полках')
+        result = 'Документа нет на полках'
+    print(result)
+    return result
 
 
 def doc_list():
     for document in documents:
         print(f'{document["type"]} "{document["number"]}" "{document["name"]}"')
+    return documents
 
 
 def add_doc():
@@ -71,9 +77,10 @@ def command():
         print('Такой команды нет... Но скоро появится :)')
 
 
-print('Список комманд', 'p - поиск человек по номеру документа',
-      's - узнать полку на которой лежит документ', 'l - список всех документов',
-      'a - добавить новый документ и положить на полку', sep='\n'
-      )
 
-command()
+if __name__ == '__main__':
+    print('Список комманд', 'p - поиск человек по номеру документа',
+          's - узнать полку на которой лежит документ', 'l - список всех документов',
+          'a - добавить новый документ и положить на полку', sep='\n'
+          )
+    command()
