@@ -10,22 +10,6 @@ directories = {
     '3': []
 }
 
-def delete_doc():
-    doc_number = str(input('Введите номер документа: '))
-    new_documents = [d for d in documents if str(d.get('number')) != doc_number]
-    if len(new_documents) == len(documents):
-        print('Такого документа нет')
-    else:
-        for directory in directories:
-            if directory.
-
-    print(new_documents)
-    print(directories)
-    return new_documents, directories
-
-delete_doc()
-
-
 
 def people_name():
     doc_number = input('Введите номер документа: ')
@@ -87,9 +71,9 @@ def command():
         print('Такой команды нет... Но скоро появится :)')
 
 
-if __name__ = '__main__'
-    print('Список комманд', 'p - поиск человек по номеру документа',
-          's - узнать полку на которой лежит документ', 'l - список всех документов',
-          'a - добавить новый документ и положить на полку', sep='\n'
-          )
-    command()
+print('Список комманд', 'p - поиск человек по номеру документа',
+      's - узнать полку на которой лежит документ', 'l - список всех документов',
+      'a - добавить новый документ и положить на полку', sep='\n'
+      )
+
+command()
