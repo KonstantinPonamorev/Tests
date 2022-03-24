@@ -24,8 +24,7 @@ def people_name(doc_number):
     return count
 
 
-def shelf_number():
-    doc_number = input('Введите номер документа: ')
+def shelf_number(doc_number):
     count = 0
     for i in range(1, len(directories) + 1):
         if doc_number in list(directories[str(i)]):
@@ -34,7 +33,7 @@ def shelf_number():
     if count != 1:
         result = 'Документа нет на полках'
     print(result)
-    return result
+    return count
 
 
 def doc_list():
@@ -43,11 +42,7 @@ def doc_list():
     return documents
 
 
-def add_doc():
-    doc_type = input('Введите тип документа: ')
-    doc_number = input('Введите номер документа: ')
-    doc_name = input('Введите имя человека: ')
-    shelf = input('На какую полку положить документ: ')
+def add_doc(doc_type, doc_number, doc_name, shelf):
     doc = {}
     doc["type"] = doc_type
     doc["number"] = doc_number
@@ -55,11 +50,13 @@ def add_doc():
     documents.append(doc)
     if shelf in list(directories):
         directories[shelf].append(doc_number)
+        marker = 1
     else:
         print('Такой полки нет, документ пока в руках :)')
+        marker = 0
     print(documents)
     print(directories)
-    return documents, directories
+    return marker
 
 
 def command():
@@ -68,11 +65,16 @@ def command():
         doc_number = input('Введите номер документа: ')
         people_name(doc_number)
     elif command == 's':
-        shelf_number()
+        doc_number = input('Введите номер документа: ')
+        shelf_number(doc_number)
     elif command == 'l':
         doc_list()
     elif command == 'a':
-        add_doc()
+        doc_type = input('Введите тип документа: ')
+        doc_number = input('Введите номер документа: ')
+        doc_name = input('Введите имя человека: ')
+        shelf = input('На какую полку положить документ: ')
+        add_doc(doc_type, doc_number, doc_name, shelf)
     else:
         print('Такой команды нет... Но скоро появится :)')
 
