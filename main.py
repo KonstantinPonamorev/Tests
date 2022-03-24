@@ -12,8 +12,7 @@ directories = {
 
 
 
-def people_name():
-    doc_number = input('Введите номер документа: ')
+def people_name(doc_number):
     count = 0
     for document in documents:
         if str(document["number"]) == str(doc_number):
@@ -22,7 +21,7 @@ def people_name():
     if count != 1:
         result = 'Человека с таким номером документа нет в списке'
     print(result)
-    return result
+    return count
 
 
 def shelf_number():
@@ -66,7 +65,8 @@ def add_doc():
 def command():
     command = input('Введите команду: ')
     if command == 'p':
-        people_name()
+        doc_number = input('Введите номер документа: ')
+        people_name(doc_number)
     elif command == 's':
         shelf_number()
     elif command == 'l':
